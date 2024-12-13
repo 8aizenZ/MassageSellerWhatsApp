@@ -26,7 +26,7 @@ def send_messages_from_file(file_path, sent_numbers_file):
             continue
 
         try:
-            kit.sendwhatmsg(number, "куку", hour, minute)
+            kit.sendwhatmsg(number, "1234", hour, minute)
             print(f"отправлено на {number}")
             sent_numbers.append(number)
 
