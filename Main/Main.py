@@ -36,3 +36,7 @@ def send_messages_from_file(file_path, sent_numbers_file):
             time.sleep(10)
         except Exception as e:
             print(f"ошибка при отправке на {number}: {e}")
+
+file_path = 'path_to_your_file.txt'
+sent_numbers_file = 'sent_numbers.txt'
+send_messages_from_file(file_path, sent_numbers_file)
