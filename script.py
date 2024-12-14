@@ -28,17 +28,16 @@ def send_messages_from_file(file_path, sent_numbers_file, interface):
             print(f"перенаправлен на {number}")
             sent_numbers.append(number)
 
-            # Update the GUI with the message
+
             interface.update_message(number, success=True)
 
             with open(sent_numbers_file, 'a', encoding='utf-8') as file:
                 file.write(number + '\n')
 
-            time.sleep(15)  # Delay for the user
+            time.sleep(15)
 
         except Exception as e:
             print(f"ошибка при отправке на {number}: {e}")
-            # Update the GUI with an error message
             interface.update_message(number, success=False)
 
 
@@ -46,12 +45,12 @@ class SimpleInterface:
     def __init__(self, master):
         self.master = master
 
-        self.master.title("Простой интерфейс")
+        self.master.title("Рассылка")
         self.master.geometry("600x600")
         self.output_label = tk.Label(master, text="", font=("Helvetica", 14))
         self.output_label.pack(pady=10)
 
-        self.timer_seconds = 15  # Set your timer duration in seconds
+        self.timer_seconds = 15
         self.timer_label = tk.Label(master, text="Time left: " + str(self.timer_seconds), font=("Helvetica", 16))
         self.timer_label.pack(pady=20)
 
@@ -64,10 +63,10 @@ class SimpleInterface:
         if self.timer_seconds > 0:
             self.timer_seconds -= 1
             self.timer_label.config(text="Time left: " + str(self.timer_seconds))
-            self.timer_label.after(1000, self.update_timer)  # call this function every second
+            self.timer_label.after(1000, self.update_timer)
         else:
             self.timer_label.config(text="Time is up! Restarting timer...")
-            self.timer_seconds = 30  # Reset the timer
+            self.timer_seconds = 15  # Reset the timer
             self.start_timer()  # Restart the timer
 
     def update_message(self, number, success=True):
